@@ -164,15 +164,16 @@
 <body>
     <header>
         <nav>
-            <div class="logo">TYPING MASTER</div>
-            <div class="nav-container">
-                <div class="nav-links">
-                    <a href="#">HOME</a>
-                    <a href="#">LESSONS</a>
-                    <a href="#">PRACTICE</a>
-                    <a href="#">GAMES</a>
-                    <a href="#">CONTACT US</a>
-                </div>
+         <div class="nav-links">
+            <a href="1.landingpage.html">Home</a>
+            <a href="#">Lessons</a>
+            <a href="#">Practice</a>
+            <a href="#">Games</a>
+            <a href="#">Contact</a>
+            <a href="4.Userloginpage.html">Log In</a>
+            <a href="2. registration.html">Register</a>
+            <a href="#" onclick="logout()">Log Out</a>
+            </div>
                 <div class="search-container">
                     <div class="search-bar">
                         <input type="text" id="searchInput" placeholder="Search lessons...">
@@ -236,6 +237,9 @@
                 alert('Please enter a search term.');
             }
         }
+        function logout() {
+    alert("You have been logged out.");
+}
     </script>
 </body>
 </html>
