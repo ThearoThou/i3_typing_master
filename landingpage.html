@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife - Sustainable Living</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .search-container {
+            margin-left: 40px; /* Increased margin to push search further right */
+        }
+        
+        .search-bar {
+            display: flex;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background-color: #2d2d2d;
+            color: white;
+            font-size: 14px;
+            width: 180px;
+        }
+        
+        .search-bar button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #cccccc;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 60px 0;
+            gap: 20px;
+        }
+        
+        .feature {
+            flex-basis: calc(25% - 20px);
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            box-sizing: border-box;
+        }
+        
+        .feature h3 {
+            margin-top: 0;
+            color: #4CAF50;
+            font-size: 20px;
+        }
+        
+        .feature p {
+            font-size: 14px;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            border-top: 1px solid #333;
+        }
+        
+        footer p {
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .search-container {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .search-bar input {
+                width: 100%;
+                font-size: 14px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                font-size: 16px;
+            }
+            
+            .feature {
+                flex-basis: 100%;
+            }
+            
+            .feature h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ECOLIFE</div>
+            <div class="nav-container">
+                <div class="nav-links">
+                    <a href="#">HOME</a>
+                    <a href="#">ABOUT</a>
+                    <a href="#">PRODUCTS</a>
+                    <a href="#">BLOG</a>
+                    <a href="#">CONTACT US</a>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                        <button>Go</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Live Sustainably, Live Better</h1>
+            <p>Discover eco-friendly products and sustainable living solutions that help reduce your carbon footprint without compromising on quality.</p>
+            <a href="#join" class="cta-button">Join Our Community</a>
+        </section>
+        
+        <section class="features">
+            <div class="feature">
+                <h3>Zero-Waste Products</h3>
+                <p>Our carefully curated selection of reusable, compostable, and plastic-free alternatives for everyday life.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>Carbon Neutral Shipping</h3>
+                <p>All our deliveries are carbon offset through verified environmental projects worldwide.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>Eco-Friendly Packaging</h3>
+                <p>100% biodegradable and compostable packaging materials for all our products.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>Sustainability Guides</h3>
+                <p>Learn how to make impactful changes with our practical guides and expert advice.</p>
+            </div>
+        </section>
+        
+        <section id="join" style="text-align: center; margin: 60px 0;">
+            <h2 style="font-size: 32px;">Ready to Make a Difference?</h2>
+            <p style="font-size: 19px;">Join 50,000+ eco-conscious members in our mission to protect the planet.</p>
+            <a href="#" class="cta-button">Start Your Green Journey</a>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 EcoLife Sustainable Living. All rights reserved.</p>
+    </footer>
+</body>
+</html>
