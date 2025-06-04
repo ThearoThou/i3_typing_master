@@ -1,204 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Register Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    input[type="password"]::-ms-reveal,
-    input[type="password"]::-ms-clear {
-      display: none;
-    }
-  </style>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .signup-container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border: 1px solid #333;
+        }
+        
+        h1 {
+            font-size: 28px;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        
+        label.required::after {
+            content: '*';
+            color: #ff4d4d;
+            margin-left: 4px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #2d2d2d;
+            border: 1px solid #333;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: #f0f0f0;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #5a8dee;
+            box-shadow: 0 0 0 2px rgba(90, 141, 238, 0.2);
+        }
+        
+        .password-hint {
+            font-size: 13px;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: #5a8dee;
+            color: white;
+            margin-top: 10px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a7dde;
+            transform: translateY(-1px);
+        }
+        
+        .btn-google {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .btn-google:hover {
+            background-color: #333;
+            transform: translateY(-1px);
+        }
+        
+        .google-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #888;
+        }
+        
+        .login-link a {
+            color: #5a8dee;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #ff4d4d;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <div x-data="authPage()" class="min-h-screen bg-gray-100">
-    <!-- Auth Pages -->
-    <div class="min-h-screen flex">
-      <!-- Left Side - Auth Forms -->
-      <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
-        <div class="w-full max-w-md">
-          <!-- Form Container -->
-          <div class="bg-white rounded-2xl shadow-xl p-8">
-            <!-- Logo -->
-            <div class="text-center mb-8">
-              <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-                <i x-show="isLogin" class="fas fa-sign-in-alt text-red-600 fa-lg"></i>
-                <i x-show="!isLogin" class="fas fa-user-plus text-red-600 fa-lg"></i>
-              </div>
-              <h2 class="text-2xl font-bold text-gray-800">
-                <span x-text="isLogin ? 'Welcome Back!' : 'Create Account'"></span>
-              </h2>
-              <p class="text-gray-600 mt-2">
-                <span x-text="isLogin ? 'Please sign in to continue' : 'Get started with your account'"></span>
-              </p>
+    <div class="signup-container">
+        <h1>Sign up</h1>
+        <p class="subtitle">Create your account</p>
+        
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name" class="required">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+                <div class="error-message" id="nameError">Please enter your name</div>
             </div>
-
-            <!-- Form -->
-            <form @submit.prevent="handleSubmit">
-              <!-- Name Field (Register only) -->
-              <div x-show="!isLogin" class="mb-6 transition-all duration-300 ease-out">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                <div class="relative">
-                  <input
-                    type="text"
-                    x-model="name"
-                    required
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-              </div>
-
-              <!-- Email Field -->
-              <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                <div class="relative">
-                  <input
-                    type="email"
-                    x-model="email"
-                    required
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition-colors"
-                    placeholder="you@example.com"
-                  />
-                  <i class="fas fa-envelope absolute right-2 top-4 w-6 h-6 text-gray-400"></i>
-                </div>
-                <p x-show="email && !validateEmail(email)" class="mt-2 text-sm text-red-600">Please enter a valid email address</p>
-              </div>
-
-              <!-- Password Field -->
-              <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                <div class="relative">
-                  <input
-                    :type="showPassword ? 'text' : 'password'"
-                    x-model="password"
-                    required
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition-colors"
-                    placeholder="••••••••"
-                  />
-                  <button
-                    type="button"
-                    class="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-                    @click="showPassword = !showPassword"
-                  >
-                    <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" class="w-6 h-6"></i>
-                  </button>
-                </div>
-                <p x-show="password && !validatePassword(password)" class="mt-2 text-sm text-red-600">Password must be at least 8 characters</p>
-              </div>
-
-              <!-- Confirm Password Field (Register only) -->
-              <div x-show="!isLogin" class="mb-6 transition-all duration-300 ease-out">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                <div class="relative">
-                  <input
-                    :type="showConfirmPassword ? 'text' : 'password'"
-                    x-model="confirmPassword"
-                    required
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition-colors"
-                    placeholder="••••••••"
-                  />
-                  <button
-                    type="button"
-                    class="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-                    @click="showConfirmPassword = !showConfirmPassword"
-                  >
-                    <i :class="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" class="w-6 h-6"></i>
-                  </button>
-                </div>
-                <p x-show="confirmPassword && !validateConfirmPassword()" class="mt-2 text-sm text-red-600">Passwords do not match</p>
-              </div>
-
-              <!-- Submit Button -->
-              <button
-                type="submit"
-                class="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="
-                  loading ||
-                  (email && !validateEmail(email)) ||
-                  (password && !validatePassword(password)) ||
-                  (!isLogin && confirmPassword && !validateConfirmPassword())
-                "
-              >
-                <span x-show="loading" class="inline-flex items-center">
-                  <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Processing...
-                </span>
-                <span x-show="!loading" x-text="isLogin ? 'Sign In' : 'Create Account'"></span>
-              </button>
-
-              <!-- Form Switch -->
-              <p class="mt-6 text-center text-gray-600">
-                <span x-text="isLogin ? 'Don\'t have an account?' : 'Already have an account?'"></span>
-                <button
-                  type="button"
-                  class="ml-1 text-red-600 hover:text-red-700 font-semibold focus:outline-none"
-                  @click="isLogin = !isLogin"
-                >
-                  <span x-text="isLogin ? 'Sign up' : 'Sign in'"></span>
-                </button>
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Side - Image -->
-      <div
-        class="hidden lg:block lg:w-1/2 bg-cover bg-center"
-        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80')"
-      >
-        <div class="h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div class="text-center text-white px-12">
-            <h2 class="text-4xl font-bold mb-6">Your Title</h2>
-            <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, expedita.</p>
-          </div>
-        </div>
-      </div>
+            
+            <div class="form-group">
+                <label for="email" class="required">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="required">Password</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+                <p class="password-hint">Must be at least 8 characters.</p>
+                <div class="error-message" id="passwordError">Password must be at least 8 characters</div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Get started</button>
+        </form>
+        
+        <button class="btn btn-google" id="googleSignup">
+            <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Sign up with Google
+        </button>
+        
+        <p class="login-link">
+            Already have an account? <a href="#" id="loginLink">Log in</a>
+        </p>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('authPage', () => ({
-        isLogin: true,
-        showPassword: false,
-        showConfirmPassword: false,
-        email: '',
-        password: '',
-        confirmPassword: '',
-        name: '',
-        loading: false,
-
-        validateEmail(email) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        },
-
-        validatePassword(password) {
-          return password.length >= 8;
-        },
-
-        validateConfirmPassword() {
-          return this.password === this.confirmPassword;
-        },
-
-        handleSubmit() {
-          this.loading = true;
-          // Simulate API call
-          setTimeout(() => {
-            this.loading = false;
-            alert(this.isLogin ? 'Logged in successfully!' : 'Registered successfully!');
-          }, 1500);
-        }
-      }));
-    });
-  </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signupForm');
+            const googleSignup = document.getElementById('googleSignup');
+            const loginLink = document.getElementById('loginLink');
+            
+            // Form validation
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                
+                let isValid = true;
+                
+                // Validate name
+                if (name === '') {
+                    document.getElementById('nameError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('nameError').style.display = 'none';
+                }
+                
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('emailError').style.display = 'none';
+                }
+                
+                // Validate password
+                if (password.length < 8) {
+                    document.getElementById('passwordError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('passwordError').style.display = 'none';
+                }
+                
+                // If form is valid, submit it (in a real app, you would send to server)
+                if (isValid) {
+                    alert('Sign up successful! (This would submit to server in a real app)');
+                }
+            });
+            
+            // Google signup handler
+            googleSignup.addEventListener('click', function() {
+                alert('Redirecting to Google sign up (This would implement OAuth in a real app)');
+            });
+            
+            // Login link handler
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Redirecting to login page (This would go to /login in a real app)');
+            });
+            
+            // Real-time password validation
+            document.getElementById('password').addEventListener('input', function() {
+                const password = this.value.trim();
+                if (password.length > 0 && password.length < 8) {
+                    document.getElementById('passwordError').style.display = 'block';
+                } else {
+                    document.getElementById('passwordError').style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
