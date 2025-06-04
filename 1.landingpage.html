@@ -1,21 +1,247 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Typing Speed Test</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Typing Master - Improve Your Typing Skills</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .search-container {
+            margin-left: 40px;
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background-color: #2d2d2d;
+            color: white;
+            font-size: 14px;
+            width: 180px;
+        }
+
+        .search-bar button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 60px 0;
+            gap: 20px;
+        }
+
+        .feature {
+            flex-basis: calc(50% - 20px);
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            box-sizing: border-box;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #4CAF50;
+            font-size: 20px;
+        }
+
+        .feature p {
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            border-top: 1px solid #333;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .feature {
+                flex-basis: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="landing-container">
-        <h1>Test Your Typing Skills</h1>
-        <p>Welcome to the fastest way to improve your typing speed!</p>
-        <div class="button-group">
-            <a href="/login" class="btn">Login</a>
-            <a href="/register" class="btn">Register</a>
-            <a href="/typing-test" class="btn primary">Start Typing Test</a>
-            <a href="/logout" class="btn outline">Logout</a>
-        </div>
+    <header>
+        <nav>
+            <div class="logo">TYPING MASTER</div>
+            <div class="nav-container">
+               <div class="nav-links">
+                    <a href="#">HOME</a>
+                    <a href="#">LESSONS</a>
+                    <a href="6. 6. UserTypingTestPage.html">Games</a>
+                    <a href="4.Userloginpage.html">Log In</a>
+                    <a href="2. registration.html">Register</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search lessons...">
+                        <button onclick="handleSearch()">Go</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Master Your Typing Skills</h1>
+            <p>Boost your speed, accuracy, and confidence with interactive lessons, real-time feedback, and fun typing games. Perfect for beginners and pros!</p>
+            <a href="#join" class="cta-button">Start Typing Now</a>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h3>Interactive Lessons</h3>
+                <p><strong>Step-by-step guidance.</strong> Start with home row keys and progress to advanced typing patterns, all at your pace.</p>
+                <p>Visual keyboards and progress indicators help track your improvement lesson by lesson.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Typing Speed Tests</h3>
+                <p><strong>Know your WPM.</strong> Take quick typing tests to measure your speed and accuracy. Compare with others and track your records.</p>
+                <p>Each test offers a detailed breakdown to help you improve.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Typing Games</h3>
+                <p><strong>Learn while having fun.</strong> Enjoy games that challenge your typing reflexes and build muscle memory — ideal for all ages.</p>
+                <p>Games include space blasters, typing races, and word drops!</p>
+            </div>
+
+            <div class="feature">
+                <h3>Progress Tracking</h3>
+                <p><strong>Your stats in one place.</strong> View charts and reports of your typing improvement over time — speed, accuracy, and consistency.</p>
+                <p>Stay motivated with badges and milestones.</p>
+            </div>
+        </section>
+
+        <section id="join" style="text-align: center; margin: 60px 0;">
+            <h2 style="font-size: 32px;">Ready to Type Smarter?</h2>
+            <p style="font-size: 19px;">Join thousands of users leveling up their typing — from students to professionals.</p>
+            <a href="#" class="cta-button">Join for Free</a>
+        </section>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Typing Master. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                alert('Searching lessons for: ' + query);
+            } else {
+                alert('Please enter a search term.');
+            }
+        }
+
+        function logout() {
+    alert("You have been logged out.");
+        }
+
+    </script>
 </body>
 </html>
