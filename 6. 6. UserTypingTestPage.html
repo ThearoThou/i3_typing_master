@@ -1,0 +1,29 @@
+<!-- typing_test.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Typing Test</title>
+  
+</head>
+<body>
+  <h2>Typing Test</h2>
+  <p id="text">The quick brown fox jumps over the lazy dog.</p>
+  <textarea id="input" rows="5" cols="50" placeholder="Start typing here..."></textarea>
+  <br>
+  <button onclick="checkTyping()">Submit</button>
+  <p id="result"></p>
+
+  <script>
+    function checkTyping() {
+    const sample = document.getElementById("text").textContent;
+    const typed = document.getElementById("input").value;
+    const words = typed.trim().split(/\s+/).length;
+    const wpm = words; // assuming 1-minute test
+    const accuracy = (sample === typed) ? 100 : Math.floor((typed.length / sample.length) * 100);
+
+    document.getElementById("result").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+    }
+
+  </script>
+</body>
+</html>
