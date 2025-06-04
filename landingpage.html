@@ -14,13 +14,13 @@
             color: #ffffff;
             line-height: 1.6;
         }
-        
+
         header {
             background-color: #1a1a1a;
             padding: 20px;
             border-bottom: 1px solid #333;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -28,39 +28,39 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .logo {
             font-weight: bold;
             font-size: 20px;
         }
-        
+
         .nav-container {
             display: flex;
             align-items: center;
             gap: 30px;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 20px;
             align-items: center;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: bold;
             font-size: 14px;
         }
-        
+
         .search-container {
-            margin-left: 40px; /* Increased margin to push search further right */
+            margin-left: 40px;
         }
-        
+
         .search-bar {
             display: flex;
         }
-        
+
         .search-bar input {
             padding: 8px 12px;
             border: none;
@@ -70,7 +70,7 @@
             font-size: 14px;
             width: 180px;
         }
-        
+
         .search-bar button {
             padding: 8px 12px;
             background-color: #4CAF50;
@@ -80,30 +80,30 @@
             cursor: pointer;
             font-size: 14px;
         }
-        
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .hero {
             text-align: center;
             padding: 60px 20px;
         }
-        
+
         .hero h1 {
             font-size: 40px;
             margin-bottom: 20px;
         }
-        
+
         .hero p {
             font-size: 19px;
             max-width: 700px;
             margin: 0 auto 30px;
             color: #cccccc;
         }
-        
+
         .cta-button {
             display: inline-block;
             background-color: #4CAF50;
@@ -114,7 +114,7 @@
             font-weight: bold;
             font-size: 18px;
         }
-        
+
         .features {
             display: flex;
             flex-wrap: wrap;
@@ -122,26 +122,26 @@
             margin: 60px 0;
             gap: 20px;
         }
-        
+
         .feature {
-            flex-basis: calc(25% - 20px);
+            flex-basis: calc(50% - 20px); /* 2 columns */
             background-color: #1e1e1e;
             padding: 25px;
             border-radius: 8px;
             border: 1px solid #333;
             box-sizing: border-box;
         }
-        
+
         .feature h3 {
             margin-top: 0;
             color: #4CAF50;
             font-size: 20px;
         }
-        
+
         .feature p {
             font-size: 14px;
         }
-        
+
         footer {
             background-color: #1a1a1a;
             text-align: center;
@@ -149,63 +149,63 @@
             margin-top: 60px;
             border-top: 1px solid #333;
         }
-        
+
         footer p {
             font-size: 14px;
         }
-        
+
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
             }
-            
+
             nav {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .nav-container {
                 flex-direction: column;
                 width: 100%;
                 gap: 15px;
             }
-            
+
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
                 width: 100%;
             }
-            
+
             .search-container {
                 margin-left: 0;
                 width: 100%;
             }
-            
+
             .search-bar {
                 width: 100%;
             }
-            
+
             .search-bar input {
                 width: 100%;
                 font-size: 14px;
             }
-            
+
             .hero h1 {
                 font-size: 32px;
             }
-            
+
             .hero p {
                 font-size: 16px;
             }
-            
+
             .cta-button {
                 font-size: 16px;
             }
-            
+
             .feature {
                 flex-basis: 100%;
             }
-            
+
             .feature h3 {
                 font-size: 18px;
             }
@@ -226,52 +226,64 @@
                 </div>
                 <div class="search-container">
                     <div class="search-bar">
-                        <input type="text" placeholder="Search...">
-                        <button>Go</button>
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        <button onclick="handleSearch()">Go</button>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <section class="hero">
             <h1>Live Sustainably, Live Better</h1>
             <p>Discover eco-friendly products and sustainable living solutions that help reduce your carbon footprint without compromising on quality.</p>
             <a href="#join" class="cta-button">Join Our Community</a>
         </section>
-        
-        <section class="features">
-            <div class="feature">
-                <h3>Zero-Waste Products</h3>
-                <p>Our carefully curated selection of reusable, compostable, and plastic-free alternatives for everyday life.</p>
-            </div>
-            
-            <div class="feature">
-                <h3>Carbon Neutral Shipping</h3>
-                <p>All our deliveries are carbon offset through verified environmental projects worldwide.</p>
-            </div>
-            
-            <div class="feature">
-                <h3>Eco-Friendly Packaging</h3>
-                <p>100% biodegradable and compostable packaging materials for all our products.</p>
-            </div>
-            
-            <div class="feature">
-                <h3>Sustainability Guides</h3>
-                <p>Learn how to make impactful changes with our practical guides and expert advice.</p>
-            </div>
-        </section>
-        
+
+    <section class="features">
+    <div class="feature">
+        <h3>Zero-Waste Products</h3>
+        <p><strong>Goodbye single-use plastic.</strong> Choose from stainless steel straws, bamboo cutlery, reusable shopping bags, and more — all designed to last and reduce your daily waste.</p>
+        <p>By switching to these alternatives, you can eliminate up to 1,000 disposable items per year from your lifestyle.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Carbon Neutral Shipping</h3>
+        <p><strong>Green delivery, guaranteed.</strong> Every order is shipped using carbon offset programs such as reforestation and renewable energy funding.</p>
+        <p>You’ll receive a footprint summary with your delivery so you know exactly how your shipment supports the planet.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Eco-Friendly Packaging</h3>
+        <p><strong>Plastic-free from start to finish.</strong> We pack all items in biodegradable materials like recycled cardboard, compostable mailers, and paper tape.</p>
+        <p>All packaging is certified to break down within 90 days in home compost — zero guilt, zero microplastics.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Sustainability Guides</h3>
+        <p><strong>Eco-education at your fingertips.</strong> Access detailed step-by-step guides on how to live more sustainably, from zero-waste swaps to creating a home compost system.</p>
+        <p>Perfect for beginners and pros alike — learn how to reduce your carbon footprint and inspire others too.</p>
+    </div>
+</section>
+
+
         <section id="join" style="text-align: center; margin: 60px 0;">
             <h2 style="font-size: 32px;">Ready to Make a Difference?</h2>
             <p style="font-size: 19px;">Join 50,000+ eco-conscious members in our mission to protect the planet.</p>
             <a href="#" class="cta-button">Start Your Green Journey</a>
         </section>
     </div>
-    
+
     <footer>
         <p>&copy; 2023 EcoLife Sustainable Living. All rights reserved.</p>
     </footer>
+
+    <script>
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value;
+            alert('Searching for: ' + query);
+        }
+    </script>
 </body>
 </html>
