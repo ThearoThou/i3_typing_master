@@ -5,262 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
             background-color: #121212;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
+            color: white;
         }
         
-        .signup-container {
+        .container {
             background-color: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 450px;
-            padding: 40px;
-            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         h1 {
-            font-size: 28px;
-            color: #f0f0f0;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #a0a0a0;
-            margin-bottom: 30px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
         
         .form-group {
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 15px;
         }
         
         label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #e0e0e0;
-        }
-        
-        label.required::after {
-            content: '*';
-            color: #ff4d4d;
-            margin-left: 4px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
         
         input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px;
             background-color: #2d2d2d;
             border: 1px solid #333;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: all 0.3s;
-            color: #f0f0f0;
-        }
-        
-        input:focus {
-            outline: none;
-            border-color: #5a8dee;
-            box-shadow: 0 0 0 2px rgba(90, 141, 238, 0.2);
-        }
-        
-        .password-hint {
-            font-size: 13px;
-            color: #777;
-            margin-top: 5px;
-        }
-        
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-        
-        .btn-primary {
-            background-color: #5a8dee;
+            border-radius: 4px;
             color: white;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3a5c8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
             margin-top: 10px;
-        }
-        
-        .btn-primary:hover {
-            background-color: #4a7dde;
-            transform: translateY(-1px);
-        }
-        
-        .btn-google {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            border: 1px solid #444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .btn-google:hover {
-            background-color: #333;
-            transform: translateY(-1px);
-        }
-        
-        .google-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
         }
         
         .login-link {
             text-align: center;
-            margin-top: 25px;
-            color: #888;
+            margin-top: 20px;
+            color: #aaa;
         }
         
         .login-link a {
-            color: #5a8dee;
+            color: #3a5c8a;
             text-decoration: none;
-            font-weight: 600;
         }
         
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        
-        .error-message {
-            color: #ff4d4d;
-            font-size: 13px;
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
             margin-top: 5px;
             display: none;
         }
     </style>
 </head>
 <body>
-    <div class="signup-container">
-        <h1>Sign up</h1>
-        <p class="subtitle">Create your account</p>
+    <div class="container">
+        <h1>Sign Up</h1>
         
         <form id="signupForm">
             <div class="form-group">
-                <label for="name" class="required">Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-                <div class="error-message" id="nameError">Please enter your name</div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name">
+                <div class="error" id="nameError">Please enter your name</div>
             </div>
             
             <div class="form-group">
-                <label for="email" class="required">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your email">
+                <div class="error" id="emailError">Please enter a valid email</div>
             </div>
             
             <div class="form-group">
-                <label for="password" class="required">Password</label>
-                <input type="password" id="password" placeholder="Create a password" required>
-                <p class="password-hint">Must be at least 8 characters.</p>
-                <div class="error-message" id="passwordError">Password must be at least 8 characters</div>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create password">
+                <div class="error" id="passwordError">Password must be at least 6 characters</div>
             </div>
             
-            <button type="submit" class="btn btn-primary">Get started</button>
+            <button type="submit">Create Account</button>
         </form>
         
-        <button class="btn btn-google" id="googleSignup">
-            <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-            </svg>
-            Sign up with Google
-        </button>
-        
-        <p class="login-link">
+        <div class="login-link">
             Already have an account? <a href="#" id="loginLink">Log in</a>
-        </p>
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const signupForm = document.getElementById('signupForm');
-            const googleSignup = document.getElementById('googleSignup');
-            const loginLink = document.getElementById('loginLink');
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Form validation
-            signupForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const password = document.getElementById('password').value.trim();
-                
-                let isValid = true;
-                
-                // Validate name
-                if (name === '') {
-                    document.getElementById('nameError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('nameError').style.display = 'none';
-                }
-                
-                // Validate email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    document.getElementById('emailError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('emailError').style.display = 'none';
-                }
-                
-                // Validate password
-                if (password.length < 8) {
-                    document.getElementById('passwordError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('passwordError').style.display = 'none';
-                }
-                
-                // If form is valid, submit it (in a real app, you would send to server)
-                if (isValid) {
-                    alert('Sign up successful! (This would submit to server in a real app)');
-                }
-            });
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
             
-            // Google signup handler
-            googleSignup.addEventListener('click', function() {
-                alert('Redirecting to Google sign up (This would implement OAuth in a real app)');
-            });
+            // Reset errors
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
             
-            // Login link handler
-            loginLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Redirecting to login page (This would go to /login in a real app)');
-            });
+            // Validate name
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                return;
+            }
             
-            // Real-time password validation
-            document.getElementById('password').addEventListener('input', function() {
-                const password = this.value.trim();
-                if (password.length > 0 && password.length < 8) {
-                    document.getElementById('passwordError').style.display = 'block';
-                } else {
-                    document.getElementById('passwordError').style.display = 'none';
-                }
-            });
+            // Validate email
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                return;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                return;
+            }
+            
+            // If everything is valid
+            alert('Account created successfully!');
+        });
+        
+        // Simple login link handler
+        document.getElementById('loginLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirect to login page would go here');
         });
     </script>
 </body>
